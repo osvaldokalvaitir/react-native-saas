@@ -1,4 +1,6 @@
 import React, { useState, useRef } from 'react';
+import { useDispatch } from 'react-redux';
+
 import {
   View,
   Platform,
@@ -8,16 +10,20 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
+import { signInRequest } from '~/store/modules/auth/actions';
+
 import styles from './styles';
 
 export default function SignIn() {
+  const dispatch = useDispatch();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   let refPassword = useRef(null);
 
   function handleSubmit() {
-    // SAGA(email, password)
+    dispatch(signInRequest(email, password));
   }
 
   return (
