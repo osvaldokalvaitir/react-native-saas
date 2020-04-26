@@ -68,7 +68,7 @@ export default function SignIn() {
           }}
         />
 
-        <TouchableOpacity onPress={() => handleSubmit} style={styles.button}>
+        <TouchableOpacity onPress={handleSubmit} style={styles.button}>
           <Text style={styles.buttonText}>Entrar</Text>
         </TouchableOpacity>
       </View>

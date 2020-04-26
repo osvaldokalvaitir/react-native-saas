@@ -2,15 +2,14 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import '~/config/StatusBarConfig';
 
-import Routes from './routes';
 import store from './store';
 
-function App() {
+import App from './App';
+
+export default function Root() {
   return (
     <Provider store={store}>
-      <Routes />
+      <App />
     </Provider>
   );
 }
-
-export default App;

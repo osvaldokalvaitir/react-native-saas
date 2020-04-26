@@ -1,6 +1,7 @@
 import { takeLatest, all, call, put, select } from 'redux-saga/effects';
 import { AsyncStorage } from 'react-native';
 import api from '~/services/api';
+import NavigationService from '~/services/navigation';
 
 import { signInSuccess, getPermissionsSuccess } from './actions';
 
@@ -13,7 +14,7 @@ export function* signIn({ payload }) {
     yield call([AsyncStorage, 'setItem'], '@Omni:token', response.data.token);
 
     yield put(signInSuccess(response.data.token));
-    // yield put(push('/'));
+    NavigationService.navigate('Main');
   } catch (err) {
     console.log('ERRO');
   }
