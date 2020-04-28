@@ -1,3 +1,9 @@
+export function initCheckSuccess() {
+  return {
+    type: '@auth/INIT_CHECK_SUCCESS',
+  };
+}
+
 export function signInRequest(email, password) {
   return {
     type: '@auth/SIGN_IN_REQUEST',

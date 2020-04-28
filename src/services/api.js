@@ -2,7 +2,7 @@ import axios from 'axios';
 // import store from '~/store';
 
 const api = axios.create({
-  baseURL: 'https://192.168.0.107:3333',
+  baseURL: 'http://10.0.2.2:3333/',
 });
 
 // api.interceptors.request.use(config => {

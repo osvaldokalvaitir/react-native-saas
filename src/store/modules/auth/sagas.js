@@ -1,9 +1,23 @@
 import { takeLatest, all, call, put, select } from 'redux-saga/effects';
-import { AsyncStorage } from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
 import api from '~/services/api';
 import NavigationService from '~/services/navigation';
 
-import { signInSuccess, getPermissionsSuccess } from './actions';
+import {
+  signInSuccess,
+  getPermissionsSuccess,
+  initCheckSuccess,
+} from './actions';
+
+export function* init() {
+  const token = yield call([AsyncStorage, 'getItem'], '@Omni:token');
+
+  if (token) {
+    yield put(signInSuccess(token));
+  }
+
+  yield put(initCheckSuccess());
+}
 
 export function* signIn({ payload }) {
   try {
