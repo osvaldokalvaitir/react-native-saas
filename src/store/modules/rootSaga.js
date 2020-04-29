@@ -1,7 +1,7 @@
 import { all, fork } from 'redux-saga/effects';
 
 import auth, { init, getPermissions } from './auth/sagas';
-// import teams from './teams/sagas';
+import teams from './teams/sagas';
 // import projects from './projects/sagas';
 // import members from './members/sagas';
 
@@ -10,6 +10,7 @@ export default function* rootSaga() {
     init(),
     // fork(getPermissions),
     auth,
-    // , teams, projects, members
+    teams,
+    // , projects, members
   ]);
 }
