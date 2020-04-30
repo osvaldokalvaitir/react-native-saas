@@ -4,7 +4,7 @@ import { View, TouchableOpacity, Image } from 'react-native';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-import { getTeamsRequest } from '~/store/modules/teams/actions';
+import { getTeamsRequest, selectTeam } from '~/store/modules/teams/actions';
 
 import styles from './styles';
 
@@ -23,7 +23,9 @@ export default function TeamSwitcher() {
         <TouchableOpacity
           key={team.id}
           style={styles.teamContainer}
-          onPress={() => {}}
+          onPress={() => {
+            dispatch(selectTeam(team));
+          }}
         >
           <Image
             style={styles.teamAvatar}

@@ -14,8 +14,6 @@ export default function teams(state = INITIAL_STATE, action) {
         break;
       }
       case '@teams/SELECT_TEAM': {
-        // localStorage.setItem('@Omni:team', JSON.stringify(action.payload.team));
-
         draft.active = action.payload.team;
         break;
       }

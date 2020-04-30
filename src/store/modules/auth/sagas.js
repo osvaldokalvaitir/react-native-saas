@@ -9,11 +9,19 @@ import {
   initCheckSuccess,
 } from './actions';
 
+import { selectTeam } from '../teams/actions';
+
 export function* init() {
   const token = yield call([AsyncStorage, 'getItem'], '@Omni:token');
 
   if (token) {
     yield put(signInSuccess(token));
+  }
+
+  const team = yield call([AsyncStorage, 'getItem'], '@Omni:team');
+
+  if (team) {
+    yield put(selectTeam(JSON.parse(team)));
   }
 
   yield put(initCheckSuccess());

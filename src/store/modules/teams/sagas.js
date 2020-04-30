@@ -1,8 +1,9 @@
 import { takeLatest, call, put, all } from 'redux-saga/effects';
+import AsyncStorage from '@react-native-community/async-storage';
 import api from '~/services/api';
 
 import { getTeamsSuccess, createTeamSuccess, closeTeamModal } from './actions';
-import { getPermissions } from '../auth/sagas';
+// import { getPermissions } from '../auth/sagas';
 
 export function* getTeams() {
   const response = yield call(api.get, 'teams');
@@ -22,8 +23,14 @@ export function* createTeam({ payload }) {
   }
 }
 
+export function* selectActiveTeam({ payload }) {
+  const { team } = payload;
+
+  yield call([AsyncStorage, 'setItem'], '@Omni:team', JSON.stringify(team));
+}
+
 export default all([
   takeLatest('@teams/GET_TEAMS_REQUEST', getTeams),
   takeLatest('@teams/CREATE_TEAM_REQUEST', createTeam),
-  takeLatest('@teams/SELECT_TEAM', getPermissions),
+  takeLatest('@teams/SELECT_TEAM', selectActiveTeam),
 ]);
