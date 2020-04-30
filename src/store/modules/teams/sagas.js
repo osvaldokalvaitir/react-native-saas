@@ -3,6 +3,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 import api from '~/services/api';
 
 import { getTeamsSuccess, createTeamSuccess, closeTeamModal } from './actions';
+import { getProjectsRequest } from '../projects/actions';
 // import { getPermissions } from '../auth/sagas';
 
 export function* getTeams() {
@@ -27,6 +28,8 @@ export function* selectActiveTeam({ payload }) {
   const { team } = payload;
 
   yield call([AsyncStorage, 'setItem'], '@Omni:team', JSON.stringify(team));
+
+  yield put(getProjectsRequest());
 }
 
 export default all([
