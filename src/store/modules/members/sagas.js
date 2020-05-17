@@ -1,5 +1,4 @@
 import { takeLatest, call, put, all } from 'redux-saga/effects';
-import { actions as toastrActions } from 'react-redux-toastr';
 import api from '~/services/api';
 
 import { getMembersSuccess } from './actions';
@@ -16,21 +15,9 @@ export function* updateMember({ payload }) {
   try {
     yield call(api.put, `members/${id}`, { roles: roles.map(role => role.id) });
 
-    yield put(
-      toastrActions.add({
-        type: 'success',
-        title: 'Membro atualizado',
-        message: 'O membro foi atualizado com sucesso',
-      })
-    );
+    console.log('SUCESSO');
   } catch (err) {
-    yield put(
-      toastrActions.add({
-        type: 'error',
-        title: 'Erro na operação',
-        message: 'Houve um erro, tente novamente!',
-      })
-    );
+    console.log('ERRO');
   }
 }
 
@@ -40,21 +27,9 @@ export function* inviteMember({ payload }) {
   try {
     yield call(api.post, 'invites', { invites: [email] });
 
-    yield put(
-      toastrActions.add({
-        type: 'success',
-        title: 'Convite enviado',
-        message: 'Enviamos um convite ao usuário para participar do time',
-      })
-    );
+    console.log('SUCESSO');
   } catch (err) {
-    yield put(
-      toastrActions.add({
-        type: 'error',
-        title: 'Erro na operação',
-        message: 'Houve um erro, tente novamente!',
-      })
-    );
+    console.log('ERRO');
   }
 }
 
