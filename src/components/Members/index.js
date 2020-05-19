@@ -11,9 +11,12 @@ import styles from './styles';
 export default function Members() {
   const dispatch = useDispatch();
   const members = useSelector(state => state.members);
+  const activeTeam = useSelector(state => state.teams.active);
 
   useEffect(() => {
-    dispatch(getMembersRequest());
+    if (activeTeam) {
+      dispatch(getMembersRequest());
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

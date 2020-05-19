@@ -16,6 +16,7 @@ export function* getTeams() {
 export function* createTeam({ payload }) {
   try {
     const { name } = payload;
+
     const response = yield call(api.post, 'teams', { name });
 
     yield put(createTeamSuccess(response.data));

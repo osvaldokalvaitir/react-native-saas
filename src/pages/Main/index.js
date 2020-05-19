@@ -49,7 +49,9 @@ export default function Main() {
               </Text>
               <TouchableOpacity
                 hitSlop={{ top: 5, bottom: 5, left: 10, right: 10 }}
-                onPress={setRightOpen(true)}
+                onPress={() => {
+                  setRightOpen(true);
+                }}
               >
                 <Icon name="group" size={24} color="#fff" />
               </TouchableOpacity>

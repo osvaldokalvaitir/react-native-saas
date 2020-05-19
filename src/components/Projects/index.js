@@ -11,11 +11,16 @@ import styles from './styles';
 export default function Projects() {
   const dispatch = useDispatch();
   const projects = useSelector(state => state.projects);
+  const activeTeam = useSelector(state => state.teams.active);
 
   useEffect(() => {
-    dispatch(getProjectsRequest());
+    if (activeTeam) {
+      dispatch(getProjectsRequest());
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  if (!activeTeam) return null;
 
   return (
     <View style={styles.container}>
