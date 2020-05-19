@@ -1,5 +1,6 @@
 import { takeLatest, call, put, all } from 'redux-saga/effects';
 import AsyncStorage from '@react-native-community/async-storage';
+import { ToastActionsCreators } from 'react-native-redux-toast';
 import api from '~/services/api';
 
 import { getTeamsSuccess, createTeamSuccess, closeTeamModal } from './actions';
@@ -21,8 +22,10 @@ export function* createTeam({ payload }) {
 
     yield put(createTeamSuccess(response.data));
     yield put(closeTeamModal());
+
+    yield put(ToastActionsCreators.displayInfo('Time criado'));
   } catch (err) {
-    console.log('ERRO');
+    yield put(ToastActionsCreators.displayError('Erro ao criar time'));
   }
 }
 

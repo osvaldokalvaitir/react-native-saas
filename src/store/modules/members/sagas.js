@@ -1,4 +1,5 @@
 import { takeLatest, call, put, all } from 'redux-saga/effects';
+import { ToastActionsCreators } from 'react-native-redux-toast';
 import api from '~/services/api';
 
 import { getMembersSuccess } from './actions';
@@ -15,9 +16,9 @@ export function* updateMember({ payload }) {
   try {
     yield call(api.put, `members/${id}`, { roles: roles.map(role => role.id) });
 
-    console.log('SUCESSO');
+    yield put(ToastActionsCreators.displayInfo('Membro atualizado'));
   } catch (err) {
-    console.log('ERRO');
+    yield put(ToastActionsCreators.displayError('Erro ao atualizar membro'));
   }
 }
 
@@ -27,9 +28,9 @@ export function* inviteMember({ payload }) {
   try {
     yield call(api.post, 'invites', { invites: [email] });
 
-    console.log('SUCESSO');
+    yield put(ToastActionsCreators.displayInfo('Convite realizado'));
   } catch (err) {
-    console.log('ERRO');
+    yield put(ToastActionsCreators.displayError('Erro ao realizar convite'));
   }
 }
 

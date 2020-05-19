@@ -1,4 +1,5 @@
 import { takeLatest, call, put, all } from 'redux-saga/effects';
+import { ToastActionsCreators } from 'react-native-redux-toast';
 import api from '~/services/api';
 
 import {
@@ -21,8 +22,10 @@ export function* createProject({ payload }) {
 
     yield put(createProjectSuccess(response.data));
     yield put(closeProjectModal());
+
+    yield put(ToastActionsCreators.displayInfo('Projeto criado'));
   } catch (err) {
-    console.log('ERRO');
+    yield put(ToastActionsCreators.displayError('Erro ao criar projeto'));
   }
 }
 

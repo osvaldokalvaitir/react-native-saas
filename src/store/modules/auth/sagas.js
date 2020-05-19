@@ -1,5 +1,6 @@
 import { takeLatest, all, call, put, select } from 'redux-saga/effects';
 import AsyncStorage from '@react-native-community/async-storage';
+import { ToastActionsCreators } from 'react-native-redux-toast';
 import api from '~/services/api';
 import NavigationService from '~/services/navigation';
 
@@ -38,7 +39,7 @@ export function* signIn({ payload }) {
     yield put(signInSuccess(response.data.token));
     NavigationService.navigate('Main');
   } catch (err) {
-    console.log('ERRO');
+    yield put(ToastActionsCreators.displayError('Credenciais inválidas'));
   }
 }
 
