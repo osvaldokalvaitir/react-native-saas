@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList, TouchableOpacity } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -6,12 +6,15 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import { getMembersRequest } from '~/store/modules/members/actions';
 
+import InviteMember from '~/components/InviteMember';
+
 import styles from './styles';
 
 export default function Members() {
   const dispatch = useDispatch();
   const members = useSelector(state => state.members);
   const activeTeam = useSelector(state => state.teams.active);
+  const [isInviteModalOpen, setIsInviteModalOpen] = useState(false);
 
   useEffect(() => {
     if (activeTeam) {
@@ -41,10 +44,18 @@ export default function Members() {
           </View>
         )}
         ListFooterComponent={() => (
-          <TouchableOpacity style={styles.button} onPress={() => {}}>
+          <TouchableOpacity
+            style={styles.button}
+            onPress={() => setIsInviteModalOpen(true)}
+          >
             <Text style={styles.buttonText}>Convidar</Text>
           </TouchableOpacity>
         )}
+      />
+
+      <InviteMember
+        visible={isInviteModalOpen}
+        onRequestClose={() => setIsInviteModalOpen(false)}
       />
     </View>
   );
