@@ -1,8 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList, TouchableOpacity } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 
 import Icon from 'react-native-vector-icons/MaterialIcons';
+
+import NewProject from '~/components/NewProject';
 
 import { getProjectsRequest } from '~/store/modules/projects/actions';
 
@@ -12,6 +14,7 @@ export default function Projects() {
   const dispatch = useDispatch();
   const projects = useSelector(state => state.projects);
   const activeTeam = useSelector(state => state.teams.active);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     if (activeTeam) {
@@ -35,9 +38,17 @@ export default function Projects() {
         )}
       />
 
-      <TouchableOpacity style={styles.newProjectButton} onPress={() => {}}>
+      <TouchableOpacity
+        style={styles.newProjectButton}
+        onPress={() => setIsModalOpen(true)}
+      >
         <Icon name="add" size={28} color="#FFF" />
       </TouchableOpacity>
+
+      <NewProject
+        visible={isModalOpen}
+        onRequestClose={() => setIsModalOpen(false)}
+      />
     </View>
   );
 }
