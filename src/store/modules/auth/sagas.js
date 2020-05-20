@@ -45,8 +45,6 @@ export function* signIn({ payload }) {
 
 export function* signOut() {
   yield call([AsyncStorage, 'clear']);
-
-  // yield put(push('/signin'));
 }
 
 export function* getPermissions() {

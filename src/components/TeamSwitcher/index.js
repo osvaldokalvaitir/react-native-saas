@@ -5,6 +5,7 @@ import { View, TouchableOpacity, Image } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import { getTeamsRequest, selectTeam } from '~/store/modules/teams/actions';
+import { signOut } from '~/store/modules/auth/actions';
 
 import NewTeam from '~/components/NewTeam';
 
@@ -22,34 +23,47 @@ export default function TeamSwitcher() {
 
   return (
     <View style={styles.container}>
-      {teams.data.map(team => (
+      <View>
+        {teams.data.map(team => (
+          <TouchableOpacity
+            key={team.id}
+            style={styles.teamContainer}
+            onPress={() => {
+              dispatch(selectTeam(team));
+            }}
+          >
+            <Image
+              style={styles.teamAvatar}
+              source={{
+                uri: `https://ui-avatars.com/api/?font-size=0.33&background=7159c1&color=fff&name=${team.name}`,
+              }}
+            />
+          </TouchableOpacity>
+        ))}
+
         <TouchableOpacity
-          key={team.id}
-          style={styles.teamContainer}
+          style={styles.newTeam}
+          onPress={() => setIsModalOpen(true)}
+        >
+          <Icon name="add" size={24} color="#999" />
+        </TouchableOpacity>
+
+        <NewTeam
+          visible={isModalOpen}
+          onRequestClose={() => setIsModalOpen(false)}
+        />
+      </View>
+
+      <View style={styles.signOutContainer}>
+        <TouchableOpacity
+          style={styles.signOut}
           onPress={() => {
-            dispatch(selectTeam(team));
+            dispatch(signOut());
           }}
         >
-          <Image
-            style={styles.teamAvatar}
-            source={{
-              uri: `https://ui-avatars.com/api/?font-size=0.33&background=7159c1&color=fff&name=${team.name}`,
-            }}
-          />
+          <Icon name="input" size={24} color="#999" />
         </TouchableOpacity>
-      ))}
-
-      <TouchableOpacity
-        style={styles.newTeam}
-        onPress={() => setIsModalOpen(true)}
-      >
-        <Icon name="add" size={24} color="#999" />
-      </TouchableOpacity>
-
-      <NewTeam
-        visible={isModalOpen}
-        onRequestClose={() => setIsModalOpen(false)}
-      />
+      </View>
     </View>
   );
 }
