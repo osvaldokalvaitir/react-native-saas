@@ -67,4 +67,5 @@ export function* getPermissions() {
 export default all([
   takeLatest('@auth/SIGN_IN_REQUEST', signIn),
   takeLatest('@auth/SIGN_OUT', signOut),
+  takeLatest('@auth/INIT_CHECK_SUCCESS', getPermissions),
 ]);

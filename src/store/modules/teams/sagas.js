@@ -6,7 +6,7 @@ import api from '~/services/api';
 import { getTeamsSuccess, createTeamSuccess, closeTeamModal } from './actions';
 import { getProjectsRequest } from '../projects/actions';
 import { getMembers } from '../members/sagas';
-// import { getPermissions } from '../auth/sagas';
+import { getPermissions } from '../auth/sagas';
 
 export function* getTeams() {
   const response = yield call(api.get, 'teams');
@@ -42,4 +42,5 @@ export default all([
   takeLatest('@teams/CREATE_TEAM_REQUEST', createTeam),
   takeLatest('@teams/SELECT_TEAM', selectActiveTeam),
   takeLatest('@teams/SELECT_TEAM', getMembers),
+  takeLatest('@teams/SELECT_TEAM', getPermissions),
 ]);

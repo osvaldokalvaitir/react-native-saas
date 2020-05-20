@@ -40,6 +40,7 @@ export default function RoleUpdater({ visible, onRequestClose, member }) {
         {roles.map(role => (
           <View key={role.id} style={styles.roleContainer}>
             <Text style={styles.roleText}>{role.name}</Text>
+
             <Switch
               value={
                 !!member.roles.find(memberRole => memberRole.id === role.id)

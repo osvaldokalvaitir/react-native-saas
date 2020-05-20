@@ -8,6 +8,7 @@ import { getMembersRequest } from '~/store/modules/members/actions';
 
 import InviteMember from '~/components/InviteMember';
 import RoleUpdater from '~/components/RoleUpdater';
+import Can from '~/components/Can';
 
 import styles from './styles';
 
@@ -38,24 +39,28 @@ export default function Members() {
           <View style={styles.memberContainer}>
             <Text style={styles.memberName}>{item.user.name}</Text>
 
-            <TouchableOpacity
-              hitSlop={{ top: 5, bottom: 5, left: 5, right: 5 }}
-              onPress={() => {
-                setIsRoleModalOpen(true);
-                setMemberEdit(item);
-              }}
-            >
-              <Icon name="settings" size={20} color="#b0b0b0" />
-            </TouchableOpacity>
+            <Can checkRole="administrator">
+              <TouchableOpacity
+                hitSlop={{ top: 5, bottom: 5, left: 5, right: 5 }}
+                onPress={() => {
+                  setIsRoleModalOpen(true);
+                  setMemberEdit(item);
+                }}
+              >
+                <Icon name="settings" size={20} color="#b0b0b0" />
+              </TouchableOpacity>
+            </Can>
           </View>
         )}
         ListFooterComponent={() => (
-          <TouchableOpacity
-            style={styles.button}
-            onPress={() => setIsInviteModalOpen(true)}
-          >
-            <Text style={styles.buttonText}>Convidar</Text>
-          </TouchableOpacity>
+          <Can checkPermission="invites_create">
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => setIsInviteModalOpen(true)}
+            >
+              <Text style={styles.buttonText}>Convidar</Text>
+            </TouchableOpacity>
+          </Can>
         )}
       />
 
@@ -70,10 +75,12 @@ export default function Members() {
         />
       )}
 
-      <InviteMember
-        visible={isInviteModalOpen}
-        onRequestClose={() => setIsInviteModalOpen(false)}
-      />
+      <Can checkPermission="invites_create">
+        <InviteMember
+          visible={isInviteModalOpen}
+          onRequestClose={() => setIsInviteModalOpen(false)}
+        />
+      </Can>
     </View>
   );
 }

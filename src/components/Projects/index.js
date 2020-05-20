@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import NewProject from '~/components/NewProject';
+import Can from '~/components/Can';
 
 import { getProjectsRequest } from '~/store/modules/projects/actions';
 
@@ -38,12 +39,14 @@ export default function Projects() {
         )}
       />
 
-      <TouchableOpacity
-        style={styles.newProjectButton}
-        onPress={() => setIsModalOpen(true)}
-      >
-        <Icon name="add" size={28} color="#FFF" />
-      </TouchableOpacity>
+      <Can checkPermission="projects_create">
+        <TouchableOpacity
+          style={styles.newProjectButton}
+          onPress={() => setIsModalOpen(true)}
+        >
+          <Icon name="add" size={28} color="#FFF" />
+        </TouchableOpacity>
+      </Can>
 
       <NewProject
         visible={isModalOpen}
