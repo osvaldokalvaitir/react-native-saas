@@ -26,6 +26,8 @@ export default function RoleUpdater({ visible, onRequestClose, member }) {
   }, [dispatch]);
 
   function handleRoleChange(value, role) {
+    if (role.name === 'Administrador' && value === false) return;
+
     const roles = value
       ? [...member.roles, role]
       : member.roles.filter(memberRole => memberRole.id !== role.id);
