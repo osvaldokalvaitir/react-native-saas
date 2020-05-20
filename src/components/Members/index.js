@@ -7,6 +7,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import { getMembersRequest } from '~/store/modules/members/actions';
 
 import InviteMember from '~/components/InviteMember';
+import RoleUpdater from '~/components/RoleUpdater';
 
 import styles from './styles';
 
@@ -15,6 +16,8 @@ export default function Members() {
   const members = useSelector(state => state.members);
   const activeTeam = useSelector(state => state.teams.active);
   const [isInviteModalOpen, setIsInviteModalOpen] = useState(false);
+  const [isRoleModalOpen, setIsRoleModalOpen] = useState(false);
+  const [memberEdit, setMemberEdit] = useState(null);
 
   useEffect(() => {
     if (activeTeam) {
@@ -37,7 +40,10 @@ export default function Members() {
 
             <TouchableOpacity
               hitSlop={{ top: 5, bottom: 5, left: 5, right: 5 }}
-              onPress={() => {}}
+              onPress={() => {
+                setIsRoleModalOpen(true);
+                setMemberEdit(item);
+              }}
             >
               <Icon name="settings" size={20} color="#b0b0b0" />
             </TouchableOpacity>
@@ -52,6 +58,17 @@ export default function Members() {
           </TouchableOpacity>
         )}
       />
+
+      {memberEdit && (
+        <RoleUpdater
+          visible={isRoleModalOpen}
+          onRequestClose={() => {
+            setIsRoleModalOpen(false);
+            setMemberEdit(null);
+          }}
+          member={memberEdit}
+        />
+      )}
 
       <InviteMember
         visible={isInviteModalOpen}

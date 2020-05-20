@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Platform } from 'react-native';
 import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 import { colors, general } from '~/styles';
 
@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.backgroundDarker,
     paddingHorizontal: 20,
-    paddingTop: getStatusBarHeight() + 25,
+    paddingTop: Platform.OS === 'ios' ? getStatusBarHeight() + 25 : 20,
   },
 
   title: {
