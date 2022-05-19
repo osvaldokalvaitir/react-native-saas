@@ -1,189 +1,66 @@
-# React Native - SaaS
+<h1 align="center">
+    <img src="/.github/assets/logo.png"
+    width="200px"
+    alt="Logo" />
+</h1>
 
-[![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/osvaldokalvaitir/react-native-saas/blob/master/LICENSE)
-![](https://img.shields.io/github/package-json/v/osvaldokalvaitir/react-native-saas.svg)
-![](https://img.shields.io/github/last-commit/osvaldokalvaitir/react-native-saas.svg?color=red)
-![](https://img.shiels.io/github/languages/top/osvaldokalvaitir/react-native-saas.svg?color=yellow)
-![](https://img.shields.io/github/languages/count/osvaldokalvaitir/react-native-saas.svg?color=lightgrey)
-![](https://img.shields.io/github/languages/code-size/osvaldokalvaitir/react-native-saas.svg)
-![](https://img.shields.io/github/repo-size/osvaldokalvaitir/react-native-saas.svg?color=blueviolet)
-[![made-for-VSCode](https://img.shields.io/badge/Made%20for-VSCode-1f425f.svg)](https://code.visualstudio.com/)
-![Open Source Love svg1](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)
+<h3 align="center">
+  React Native - SaaS
+</h3>
 
-Aplicação usando Redux, Redux-Saga, React Native Redux Toast, Immer, react-native-side-menu, React Native Async Storage, react-native-iphone-x-helper e React Native Vector Icons consumindo os recursos da API do [Node.js - SaaS](https://github.com/osvaldokalvaitir/nodejs-saas).
+<p align="center">
+  :cloud: Application using Redux, Redux-Saga, React Native Redux Toast, Immer, react-native-side-menu, React Native Async Storage, react-native-iphone-x-helper, React Native Vector Icons and consuming the features of the Node.js - SaaS API
+</p>
 
-## Índice
+<p align="center">
+  <img alt="GitHub language count" src="https://img.shields.io/github/languages/count/osvaldokalvaitir/react-native-saas.svg?color=00A83A">
 
-- [Capturas de Tela](#capturas-de-tela)
+  <img alt="GitHub language top" src="https://img.shields.io/github/languages/top/osvaldokalvaitir/react-native-saas.svg?color=00A83A">
 
-  - [Login](#login)
+  <a href="https://kalvaitir.com/">
+    <img alt="Made by Kalvaitir" src="https://img.shields.io/badge/made%20by-Kalvaitir-00A83A">
+  </a>
 
-  - [Projetos](#projetos)
+  <img alt="License" src="https://img.shields.io/badge/license-MIT-00A83A">
+</p>
 
-  - [Criar projeto](#criar-projeto)
+<p align="center">
+  <a href="#iphone-demo">Demo</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="#wrench-install-and-run">Install and run</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="#memo-license">License</a>
+</p>
 
-  - [Times](#times)
+## :iphone: Demo
 
-  - [Criar time](#criar-time)
+![Demo](/.github/assets/demo.gif)
 
-  - [Membros](#membros)
+## :wrench: Install and run
 
-  - [Permissões](#permissões)
+_ps: Before running the app, start the [Node.js - SaaS](https://github.com/osvaldokalvaitir/nodejs-saas) backend._
 
-  - [Convidar](#convidar)
+Open terminal:
 
-- [Desenvolvimento](#desenvolvimento)
+```sh
+# Clone this repo
+git clone https://github.com/osvaldokalvaitir/react-native-saas
 
-  - [Configuração do Ambiente](#configuração-do-ambiente)
+# Entry in folder
+cd react-native-saas
 
-  - [Instalação do Projeto](#instalação-do-projeto)
+# Install deps with npm or yarn
+npm install | yarn
 
-  - [Execução do Projeto](#execução-do-projeto)
+# Launch the app on android with react-native or yarn
+react-native run-android | yarn android
 
-- [Utilizados no Projeto](#utilizados-no-projeto)
+# Launch the app on ios with react-native or yarn
+react-native run-ios | yarn ios
+```
 
-  - [Bibliotecas](#bibliotecas)
+## :memo: License
 
-  - [APIs](#apis)
+This project is under the MIT license. See [LICENSE](/LICENSE) for more information.
 
-## Capturas de Tela
+---
 
-### Login
-
-![SignIn](/.github/assets/signin.png)
-Esta é a primeira tela, onde o usuário precisa realizar o login para entrar no sistema.
-
-### Projetos
-
-![Projects](/.github/assets/projects.png)
-Nesta tela, encontram-se todos os projetos do time selecionado.
-
-### Criar projeto
-
-![Create project](/.github/assets/create_project.png)
-Neste janela, é possível criar um projeto para o time selecionado.
-
-### Time
-
-![Teams](/.github/assets/teams.png)
-Neste menu esquerdo, estão todos os times e é possível selecionar um para gerenciar seus projetos e membros.
-
-### Criar time
-
-![Create team](/.github/assets/create_team.png)
-Neste janela, é possível criar um time.
-
-### Membros
-
-![Members](/.github/assets/members.png)
-Neste menu direito, é possível visualizar todos os membros do time selecionado.
-
-### Permissões
-
-![Permissions](/.github/assets/permissions.png)
-Neste janela, é possível alterar as permissões dos membros existentes.
-
-### Convidar
-
-![Invite](/.github/assets/invite.png)
-Neste janela, é possível enviar um email para convidar membros para participar do time.
-
-## Desenvolvimento
-
-### Configuração do Ambiente
-
-Clique [aqui](https://github.com/osvaldokalvaitir/projects-settings/blob/master/README.md) e siga `Configuração de Ambiente`.
-
-### Instalação do Projeto
-
-Clique [aqui](https://github.com/osvaldokalvaitir/projects-settings/blob/master/nodejs/nodejs.md) e siga `Instalação de Projeto`.
-
-### Execução do Projeto
-
-Clique [aqui](https://github.com/osvaldokalvaitir/projects-settings/blob/master/nodejs/libs/react-native-cli.md) e siga `Execução de Projeto para Desenvolvimento`.
-
-## Utilizados no Projeto
-
-### Bibliotecas
-
-- [Axios](https://github.com/osvaldokalvaitir/projects-settings/blob/master/nodejs/libs/axios.md)
-
-- [Babel Root Import](https://github.com/osvaldokalvaitir/projects-settings/blob/master/nodejs/libs/babel-plugin-root-import.md)
-
-- [babel-eslint](https://github.com/osvaldokalvaitir/projects-settings/blob/master/nodejs/libs/babel-eslint.md)
-
-- [ESLint](https://github.com/osvaldokalvaitir/projects-settings/blob/master/nodejs/libs/eslint.md)
-
-- [eslint-config-prettier](https://github.com/osvaldokalvaitir/projects-settings/blob/master/nodejs/libs/eslint-config-prettier.md)
-
-- [eslint-import-resolver-babel-plugin-root-import](https://github.com/osvaldokalvaitir/projects-settings/blob/master/nodejs/libs/eslint-import-resolver-babel-plugin-root-import.md)
-
-- [eslint-plugin-prettier](https://github.com/osvaldokalvaitir/projects-settings/blob/master/nodejs/libs/eslint-plugin-prettier.md)
-
-- [Immer](https://github.com/osvaldokalvaitir/projects-settings/blob/master/nodejs/libs/immer.md)
-
-- [Prettier](https://github.com/osvaldokalvaitir/projects-settings/blob/master/nodejs/libs/prettier.md)
-
-- [prop-types](https://github.com/osvaldokalvaitir/projects-settings/blob/master/nodejs/libs/prop-types.md)
-
-- [React Native Async Storage](https://github.com/osvaldokalvaitir/projects-settings/blob/master/nodejs/libs/@react-native-community-async-storage.md)
-
-- [React Native Gesture Handler](https://github.com/osvaldokalvaitir/projects-settings/blob/master/nodejs/libs/react-native-gesture-handler.md)
-
-- [React Native Redux Toast](https://github.com/osvaldokalvaitir/projects-settings/blob/master/nodejs/libs/react-native-redux-toast.md)
-
-- [React Native Vector Icons](https://github.com/osvaldokalvaitir/projects-settings/blob/master/nodejs/libs/react-native-vector-icons.md)
-
-- [React Navigation](https://github.com/osvaldokalvaitir/projects-settings/blob/master/nodejs/libs/react-navigation.md)
-
-- [React Redux](https://github.com/osvaldokalvaitir/projects-settings/blob/master/nodejs/libs/react-redux.md)
-
-- [react-native-cli](https://github.com/osvaldokalvaitir/projects-settings/blob/master/nodejs/libs/react-native-cli.md)
-
-- [react-native-iphone-x-helper](https://github.com/osvaldokalvaitir/projects-settings/blob/master/nodejs/libs/react-native-iphone-x-helper.md)
-
-- [react-native-side-menu](https://github.com/osvaldokalvaitir/projects-settings/blob/master/nodejs/libs/react-native-side-menu.md)
-
-- [Redux](https://github.com/osvaldokalvaitir/projects-settings/blob/master/nodejs/libs/redux.md)
-
-- [Redux-Saga](https://github.com/osvaldokalvaitir/projects-settings/blob/master/nodejs/libs/redux-saga.md)
-
-### APIs
-
-- **[Node.js - SaaS](https://github.com/osvaldokalvaitir/nodejs-saas)**
-
-  - **Rotas**
-
-    - Sessões
-
-      - Adiciona novas sessões
-
-    - Times
-
-      - Lista todos os times
-
-      - Adiciona novos times
-
-    - Convites
-
-      - Adiciona novos convites para um time
-
-    - Projetos
-
-      - Lista todos os projetos de um time
-
-      - Adiciona novos projetos para um time
-
-    - Função
-
-      - Lista todas as funções
-
-    - Membros
-
-      - Lista todos os membros de um time
-
-      - Edita dados de um mebro de um time
-
-    - Permissões
-
-      - Lista todas as funções e as permissões do membro de um time
+<p align="center">
+Developed with 💚 by <a href="https://www.linkedin.com/in/osvaldokalvaitir">Osvaldo Kalvaitir Filho</a>
+</p>
